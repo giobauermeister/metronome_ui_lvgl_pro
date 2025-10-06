@@ -1,0 +1,69 @@
+<screen>
+	<styles>
+		<style name="style_main" bg_color="0xDADDE5" />
+		<style
+			name="style_button"
+			bg_opa="0"
+			bg_color="0xB8B8B8"
+			shadow_opa="0"
+			radius="250"
+			text_color="0x495465"
+			pad_all="0"
+		/>
+		<style name="style_button_checked" radius="250" bg_color="0xB8B8B8" />
+	</styles>
+
+	<view name="screen_main" scrollable="false">
+		<style name="style_main" />
+
+		<lv_image src="img_lvgl_logo" align="top_mid" y="18" />
+
+		<lv_label
+			text="METRONOME"
+			style_text_font="font_oxanium_semibold_20"
+			align="top_mid"
+			y="60"
+			style_text_color="0x878F9A"
+		/>
+
+		<wd_beat_indicator align="top_mid" y="110" />
+
+		<bpm_stepper align="center" />
+
+		<bpm_scale name="bpm_scale" align="center" y="105" />
+
+		<lv_button name="button_tap_tempo" width="60" height="60" x="120" y="383" checkable="true">
+			<style name="style_button" />
+			<style name="style_button_checked" selector="checked" />
+			<lv_label
+				text="TAP"
+				style_text_font="font_oxanium_semibold_20"
+				style_text_color="0x71777A"
+				align="center"
+				style_pad_top="3"
+			/>
+			<event_cb callback="toggle_panel_cb" trigger="value_changed" user_data="tap_area" />
+		</lv_button>
+
+		<lv_button name="button_beat_setting" width="60" height="60" x="310" y="379" checkable="true">
+			<style name="style_button" />
+			<style name="style_button_checked" selector="checked" />
+			<lv_image src="img_note" align="center" />
+			<event_cb callback="toggle_panel_cb" trigger="value_changed" user_data="beat_setting" />
+		</lv_button>
+
+		<lv_button width="60" height="60" x="210" y="407">
+			<subject_toggle_event subject="subject_play_pause" trigger="clicked" />
+			<style name="style_button" />
+			<lv_image src="img_play" align="center">
+				<bind_flag_if_eq flag="hidden" subject="subject_play_pause" ref_value="1" />
+			</lv_image>
+			<lv_image src="img_pause" align="center">
+				<bind_flag_if_eq flag="hidden" subject="subject_play_pause" ref_value="0" />
+			</lv_image>
+		</lv_button>
+
+		<tap_area name="tap_area" align="left_mid" x="-420" />
+		<beat_setting name="beat_setting" align="right_mid" x="420" />
+	</view>
+</screen>

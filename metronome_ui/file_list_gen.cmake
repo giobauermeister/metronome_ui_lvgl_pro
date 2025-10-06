@@ -1,0 +1,26 @@
+list(
+  APPEND
+  PROJECT_SOURCES
+  ${CMAKE_CURRENT_LIST_DIR}/widgets/wd_beat_indicator/wd_beat_indicator.c
+  ${CMAKE_CURRENT_LIST_DIR}/widgets/wd_beat_indicator/wd_beat_indicator_xml_parser.c
+  ${CMAKE_CURRENT_LIST_DIR}/widgets/wd_beat_indicator/wd_beat_indicator_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/beat_dot/beat_dot_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/beat_setting/beat_setting_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/bpm_scale/bpm_scale_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/bpm_stepper/bpm_stepper_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/components/tap_area/tap_area_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/screens/screen_main/screen_main_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/metronome_ui_gen.c
+  ${CMAKE_CURRENT_LIST_DIR}/metronome_ui.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_oxanium_semibold_16_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_oxanium_semibold_20_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_oxanium_semibold_25_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_gemunu_light_110_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_gemunu_light_130_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_gemunu_bold_20_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/fonts/font_gemunu_medium_60_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/img_note_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/img_play_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/img_pause_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/img_scale_gradient_data.c
+  ${CMAKE_CURRENT_LIST_DIR}/images/img_lvgl_logo_data.c)

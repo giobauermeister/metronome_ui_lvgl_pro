@@ -1,0 +1,18 @@
+<component>
+	<previews>
+		<preview width="480" height="480" style_radius="250" style_bg_color="0xDADDE5" />
+	</previews>
+
+	<view width="350" height="350" style_radius="250" style_bg_color="0xB8B8B8" style_border_width="0" align="center">
+		<lv_label
+			style_text_align="center"
+			width="90"
+			text="TAP TEMPO"
+			style_text_font="font_oxanium_semibold_25"
+			style_text_color="0x666C70"
+			align="right_mid"
+			x="-7"
+		/>
+		<event_cb callback="tap_tempo_clicked_cb" trigger="clicked" />
+	</view>
+</component>

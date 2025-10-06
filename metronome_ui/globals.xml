@@ -1,0 +1,104 @@
+<globals>
+	<api>
+		<!-- Add <enumdefs> here -->
+	</api>
+
+	<consts>
+		<!-- Add <px>, <int>, <color> etc here -->
+		<int name="bpm_min" value="40" help="global BPM min value" />
+		<int name="bpm_max" value="200" help="global BPM max value" />
+		<int name="beats_min" value="2" help="global beats min value" />
+		<int name="beats_max" value="7" help="global beats max value" />
+	</consts>
+
+	<styles>
+		<!-- Add <style> tags here -->
+	</styles>
+
+	<subjects>
+		<int name="subject_bpm" value="40" min_value="40" max_value="200" help="beats per minute value" />
+		<int name="subject_beats_per_measure" value="4" min_value="2" max_value="7" help="beats per measure value" />
+		<int name="subject_current_beat" value="-1" min_value="-1" max_value="6" help="current active beat" />
+		<int
+			name="subject_play_pause"
+			value="0"
+			min_value="0"
+			max_value="1"
+			help="subject for controlling metronome play/pause"
+		/>
+	</subjects>
+
+	<images>
+		<data name="img_note" src_path="images/img_note.png" color_format="rgb565a8" />
+		<data name="img_play" src_path="images/img_play.png" color_format="rgb565a8" />
+		<data name="img_pause" src_path="images/img_pause.png" color_format="rgb565a8" />
+		<data name="img_scale_gradient" src_path="images/img_scale_gradient.png" color_format="rgb565a8" />
+		<data name="img_lvgl_logo" src_path="images/img_lvgl_logo.png" color_format="rgb565a8" />
+	</images>
+
+	<fonts>
+		<bin
+			name="font_oxanium_semibold_16"
+			size="16"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F"
+			symbols=""
+			src_path="fonts/Oxanium-SemiBold.ttf"
+		/>
+		<bin
+			name="font_oxanium_semibold_20"
+			size="20"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F"
+			symbols=""
+			src_path="fonts/Oxanium-SemiBold.ttf"
+		/>
+		<bin
+			name="font_oxanium_semibold_25"
+			size="25"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F"
+			symbols=""
+			src_path="fonts/Oxanium-SemiBold.ttf"
+		/>
+		<bin
+			name="font_gemunu_light_110"
+			size="110"
+			bpp="4"
+			as_file="false"
+			range="0x20-0x7F"
+			symbols=""
+			src_path="fonts/GemunuLibre-Light.ttf"
+		/>
+		<bin
+			name="font_gemunu_light_130"
+			size="130"
+			bpp="4"
+			as_file="false"
+			range="0x2B,0x2D,0x30-0x39"
+			symbols=""
+			src_path="fonts/GemunuLibre-Light.ttf"
+		/>
+		<bin
+			name="font_gemunu_bold_20"
+			size="20"
+			bpp="4"
+			as_file="false"
+			range="0x2B,0x2D,0x30-0x39"
+			symbols=""
+			src_path="fonts/GemunuLibre-Light.ttf"
+		/>
+		<bin
+			name="font_gemunu_medium_60"
+			size="60"
+			bpp="4"
+			as_file="false"
+			range="0x2B,0x2D,0x30-0x39"
+			symbols=""
+			src_path="fonts/GemunuLibre-Medium.ttf"
+		/>
+	</fonts>
+</globals>

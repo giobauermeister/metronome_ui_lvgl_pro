@@ -1,0 +1,48 @@
+<component>
+	<previews>
+		<preview width="480" height="480" style_radius="250" style_bg_color="0xDADDE5" />
+	</previews>
+
+	<styles>
+		<style name="style_arc_bg" arc_color="0x666C70" />
+		<style name="style_arc_knob" pad_all="12" bg_color="0x4CF543" />
+	</styles>
+
+	<view
+		extends="lv_obj"
+		width="350"
+		height="350"
+		style_radius="250"
+		style_bg_color="0xB8B8B8"
+		style_border_width="0"
+		align="center"
+	>
+		<lv_label
+			bind_text="subject_beats_per_measure"
+			style_text_font="font_gemunu_medium_60"
+			style_text_color="0x666C70"
+			align="left_mid"
+			x="25"
+		/>
+
+		<lv_arc
+			bind_value="subject_beats_per_measure"
+			align="left_mid"
+			x="-202"
+			width="300"
+			height="300"
+			rotation="-40"
+			start_angle="0"
+			end_angle="80"
+			bg_start_angle="0"
+			bg_end_angle="80"
+			min_value="2"
+			max_value="7"
+			mode="reverse"
+		>
+			<style name="style_arc_bg" selector="main" />
+			<style name="style_arc_bg" selector="indicator" />
+			<style name="style_arc_knob" selector="knob" />
+		</lv_arc>
+	</view>
+</component>

@@ -1,0 +1,50 @@
+<component>
+	<previews>
+		<preview width="460" height="100" style_bg_color="0xDADDE5" />
+	</previews>
+
+	<styles>
+		<style name="style_scroll_container" bg_opa="0" border_width="0" />
+		<style name="style_major_ticks" length="26" line_width="4" line_color="0x6DC868" pad_top="8" />
+		<style name="style_minor_ticks" length="15" line_width="2" line_color="0x71777A" />
+		<style name="style_main_line" line_width="0" />
+		<style name="style_scrollbar" width="0" />
+	</styles>
+
+	<view width="460" height="content" style_pad_all="0">
+		<style name="style_scroll_container" />
+
+		<lv_obj
+			name="bpm_scroll_scale"
+			width="415"
+			height="content"
+			style_pad_all="0"
+			style_pad_left="230"
+			style_pad_right="190"
+		>
+			<style name="style_scroll_container" />
+			<style name="style_scrollbar" selector="scrollbar" />
+			<lv_scale
+				height="50"
+				min_value="40"
+				max_value="200"
+				mode="horizontal_top"
+				total_tick_count="161"
+				major_tick_every="10"
+				width="2400"
+				style_text_font="font_gemunu_bold_20"
+				style_text_color="0x878F9A"
+			>
+				<style name="style_major_ticks" selector="indicator" />
+				<style name="style_minor_ticks" selector="items" />
+				<style name="style_main_line" selector="main" />
+			</lv_scale>
+
+			<event_cb callback="on_bmp_scroll_cb" trigger="scroll" />
+			<event_cb callback="bpm_scale_size_change_cb" trigger="size_changed" />
+		</lv_obj>
+
+		<lv_image src="img_scale_gradient" align="bottom_left" />
+		<lv_image src="img_scale_gradient" align="bottom_right" rotation="1800" />
+	</view>
+</component>
