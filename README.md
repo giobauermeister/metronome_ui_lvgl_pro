@@ -6,6 +6,8 @@ This is a musical metronome where you can set BPM, tap tempo and set beats per m
   <img src="repo_assets/metronome_ui.gif" width="40%"/>
 </p>
 
+Test it online here with LVGL Pro Online Viewer: https://viewer.lvgl.io/?repo=https://github.com/giobauermeister/metronome_ui_lvgl_pro/tree/main/metronome_ui
+
 Metronome running on Waveshare round display: [https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm](https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm)
 
 <p align="center">
