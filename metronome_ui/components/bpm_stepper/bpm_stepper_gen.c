@@ -59,6 +59,7 @@ lv_obj_t * bpm_stepper_create(lv_obj_t * parent)
     }
 
     lv_obj_t * lv_obj_0 = lv_obj_create(parent);
+    lv_obj_set_name_static(lv_obj_0, "bpm_stepper_#");
     lv_obj_set_width(lv_obj_0, 400);
     lv_obj_set_height(lv_obj_0, 141);
     lv_obj_set_flag(lv_obj_0, LV_OBJ_FLAG_SCROLLABLE, false);
@@ -73,7 +74,8 @@ lv_obj_t * bpm_stepper_create(lv_obj_t * parent)
     lv_obj_set_style_text_font(lv_label_0, font_gemunu_light_110, 0);
     lv_obj_set_align(lv_label_0, LV_ALIGN_CENTER);
     
-    lv_obj_add_subject_increment_event(lv_button_0, &subject_bpm, LV_EVENT_CLICKED, -1, false);
+    lv_subject_increment_dsc_t * subject_increment_event_0 = lv_obj_add_subject_increment_event(lv_button_0, &subject_bpm, LV_EVENT_CLICKED, -1);
+    lv_obj_set_subject_increment_event_rollover(lv_button_0, subject_increment_event_0, false);
     
     lv_obj_t * lv_label_1 = lv_label_create(lv_obj_0);
     lv_label_bind_text(lv_label_1, &subject_bpm, NULL);
@@ -96,11 +98,10 @@ lv_obj_t * bpm_stepper_create(lv_obj_t * parent)
     lv_obj_set_style_text_font(lv_label_3, font_gemunu_light_110, 0);
     lv_obj_set_align(lv_label_3, LV_ALIGN_CENTER);
     
-    lv_obj_add_subject_increment_event(lv_button_1, &subject_bpm, LV_EVENT_CLICKED, 1, false);
+    lv_subject_increment_dsc_t * subject_increment_event_1 = lv_obj_add_subject_increment_event(lv_button_1, &subject_bpm, LV_EVENT_CLICKED, 1);
+    lv_obj_set_subject_increment_event_rollover(lv_button_1, subject_increment_event_1, false);
 
     LV_TRACE_OBJ_CREATE("finished");
-
-    lv_obj_set_name(lv_obj_0, "bpm_stepper_#");
 
     return lv_obj_0;
 }

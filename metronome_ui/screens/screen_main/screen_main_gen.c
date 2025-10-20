@@ -60,6 +60,7 @@ lv_obj_t * screen_main_create(void)
     }
 
     lv_obj_t * screen_main = lv_obj_create(NULL);
+    lv_obj_set_name_static(screen_main, "screen_main_#");
     lv_obj_set_name(screen_main, "screen_main");
     lv_obj_set_flag(screen_main, LV_OBJ_FLAG_SCROLLABLE, false);
 
@@ -149,8 +150,6 @@ lv_obj_t * screen_main_create(void)
     lv_obj_set_x(beat_setting, 420);
 
     LV_TRACE_OBJ_CREATE("finished");
-
-    lv_obj_set_name(screen_main, "screen_main");
 
     return screen_main;
 }

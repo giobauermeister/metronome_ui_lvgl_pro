@@ -35,6 +35,7 @@ lv_obj_t * tap_area_create(lv_obj_t * parent)
     LV_TRACE_OBJ_CREATE("begin");
 
     lv_obj_t * lv_obj_0 = lv_obj_create(parent);
+    lv_obj_set_name_static(lv_obj_0, "tap_area_#");
     lv_obj_set_width(lv_obj_0, 350);
     lv_obj_set_height(lv_obj_0, 350);
     lv_obj_set_style_radius(lv_obj_0, 250, 0);
@@ -54,8 +55,6 @@ lv_obj_t * tap_area_create(lv_obj_t * parent)
     lv_obj_add_event_cb(lv_obj_0, tap_tempo_clicked_cb, LV_EVENT_CLICKED, NULL);
 
     LV_TRACE_OBJ_CREATE("finished");
-
-    lv_obj_set_name(lv_obj_0, "tap_area_#");
 
     return lv_obj_0;
 }
