@@ -24,9 +24,13 @@
  *  STATIC PROTOTYPES
  **********************/
 
+static void check_font(lv_font_t ** font, const char * name);
+
 /**********************
  *  STATIC VARIABLES
  **********************/
+
+static uint32_t metronome_ui_target = METRONOME_UI_TARGET_ALL;
 
 /*----------------
  * Translations
@@ -63,15 +67,16 @@ extern lv_font_t font_gemunu_medium_60_data;
  * Images
  *----------------*/
 
-const void * img_note;
+/* Targets: any */
+const void * img_note = NULL;
 extern const void * img_note_data;
-const void * img_play;
+const void * img_play = NULL;
 extern const void * img_play_data;
-const void * img_pause;
+const void * img_pause = NULL;
 extern const void * img_pause_data;
-const void * img_scale_gradient;
+const void * img_scale_gradient = NULL;
 extern const void * img_scale_gradient_data;
-const void * img_lvgl_logo;
+const void * img_lvgl_logo = NULL;
 extern const void * img_lvgl_logo_data;
 
 /*----------------
@@ -104,30 +109,84 @@ void metronome_ui_init_gen(const char * asset_path)
      * Fonts
      *----------------*/
 
-    /* get font 'font_oxanium_semibold_16' from a C array */
-    font_oxanium_semibold_16 = &font_oxanium_semibold_16_data;
-    /* get font 'font_oxanium_semibold_20' from a C array */
-    font_oxanium_semibold_20 = &font_oxanium_semibold_20_data;
-    /* get font 'font_oxanium_semibold_25' from a C array */
-    font_oxanium_semibold_25 = &font_oxanium_semibold_25_data;
-    /* get font 'font_gemunu_light_110' from a C array */
-    font_gemunu_light_110 = &font_gemunu_light_110_data;
-    /* get font 'font_gemunu_light_130' from a C array */
-    font_gemunu_light_130 = &font_gemunu_light_130_data;
-    /* get font 'font_gemunu_bold_20' from a C array */
-    font_gemunu_bold_20 = &font_gemunu_bold_20_data;
-    /* get font 'font_gemunu_medium_60' from a C array */
-    font_gemunu_medium_60 = &font_gemunu_medium_60_data;
+    /* Targets: any */
 
+    #if METRONOME_UI_CHECK_COMPILE_TARGET(METRONOME_UI_TARGET_ALL)
+    if (metronome_ui_check_target(METRONOME_UI_TARGET_ALL)) {
+        if (!font_oxanium_semibold_16) {
+            /* font_oxanium_semibold_16 */
+            /* get font 'font_oxanium_semibold_16' from a C array */
+            font_oxanium_semibold_16 = &font_oxanium_semibold_16_data;
+
+        }
+        if (!font_oxanium_semibold_20) {
+            /* font_oxanium_semibold_20 */
+            /* get font 'font_oxanium_semibold_20' from a C array */
+            font_oxanium_semibold_20 = &font_oxanium_semibold_20_data;
+
+        }
+        if (!font_oxanium_semibold_25) {
+            /* font_oxanium_semibold_25 */
+            /* get font 'font_oxanium_semibold_25' from a C array */
+            font_oxanium_semibold_25 = &font_oxanium_semibold_25_data;
+
+        }
+        if (!font_gemunu_light_110) {
+            /* font_gemunu_light_110 */
+            /* get font 'font_gemunu_light_110' from a C array */
+            font_gemunu_light_110 = &font_gemunu_light_110_data;
+
+        }
+        if (!font_gemunu_light_130) {
+            /* font_gemunu_light_130 */
+            /* get font 'font_gemunu_light_130' from a C array */
+            font_gemunu_light_130 = &font_gemunu_light_130_data;
+
+        }
+        if (!font_gemunu_bold_20) {
+            /* font_gemunu_bold_20 */
+            /* get font 'font_gemunu_bold_20' from a C array */
+            font_gemunu_bold_20 = &font_gemunu_bold_20_data;
+
+        }
+        if (!font_gemunu_medium_60) {
+            /* font_gemunu_medium_60 */
+            /* get font 'font_gemunu_medium_60' from a C array */
+            font_gemunu_medium_60 = &font_gemunu_medium_60_data;
+
+        }
+    }
+    #endif
 
     /*----------------
      * Images
      *----------------*/
-    img_note = &img_note_data;
-    img_play = &img_play_data;
-    img_pause = &img_pause_data;
-    img_scale_gradient = &img_scale_gradient_data;
-    img_lvgl_logo = &img_lvgl_logo_data;
+
+    /* Targets: any */
+    #if METRONOME_UI_CHECK_COMPILE_TARGET(METRONOME_UI_TARGET_ALL)
+    if (metronome_ui_check_target(METRONOME_UI_TARGET_ALL)) {
+        /* img_note */
+        if (!img_note) {
+            img_note = &img_note_data;
+        }
+        /* img_play */
+        if (!img_play) {
+            img_play = &img_play_data;
+        }
+        /* img_pause */
+        if (!img_pause) {
+            img_pause = &img_pause_data;
+        }
+        /* img_scale_gradient */
+        if (!img_scale_gradient) {
+            img_scale_gradient = &img_scale_gradient_data;
+        }
+        /* img_lvgl_logo */
+        if (!img_lvgl_logo) {
+            img_lvgl_logo = &img_lvgl_logo_data;
+        }
+    }
+    #endif
 
     /*----------------
      * Global styles
@@ -156,6 +215,16 @@ void metronome_ui_init_gen(const char * asset_path)
 #if LV_USE_XML
     /* Register widgets */
     wd_beat_indicator_register();
+
+    /* Check all fonts / default if needed. This prevents fonts that are used in one target but
+       defined in another from causing assertion failures during rendering of the Preview. */
+    check_font(&font_oxanium_semibold_16, "font_oxanium_semibold_16");
+    check_font(&font_oxanium_semibold_20, "font_oxanium_semibold_20");
+    check_font(&font_oxanium_semibold_25, "font_oxanium_semibold_25");
+    check_font(&font_gemunu_light_110, "font_gemunu_light_110");
+    check_font(&font_gemunu_light_130, "font_gemunu_light_130");
+    check_font(&font_gemunu_bold_20, "font_gemunu_bold_20");
+    check_font(&font_gemunu_medium_60, "font_gemunu_medium_60");
 
     /* Register fonts */
     lv_xml_register_font(NULL, "font_oxanium_semibold_16", font_oxanium_semibold_16);
@@ -195,8 +264,23 @@ void metronome_ui_init_gen(const char * asset_path)
      *  Permanent screens
      *-------------------*/
     /* If XML is enabled it's assumed that the permanent screens are created
-     * manaully from XML using lv_xml_create() */
+     * manually from XML using lv_xml_create() */
 #endif
+}
+
+void metronome_ui_set_target(uint32_t target)
+{
+    metronome_ui_target = target;
+}
+
+uint32_t metronome_ui_get_target(void)
+{
+    return metronome_ui_target;
+}
+
+bool metronome_ui_check_target(uint32_t target)
+{
+    return (metronome_ui_target & target) ? true : false;
 }
 
 /* Callbacks */
@@ -226,3 +310,11 @@ void __attribute__((weak)) toggle_panel_cb(lv_event_t * e)
 /**********************
  *   STATIC FUNCTIONS
  **********************/
+
+static void check_font(lv_font_t ** font, const char * name)
+{
+    if (!(*font)) {
+        *font = (lv_font_t *)LV_FONT_DEFAULT;
+        LV_LOG_WARN("font `%s` was not set. Using `LV_FONT_DEFAULT` instead", name);
+    }
+}

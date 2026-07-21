@@ -19,35 +19,60 @@ extern "C" {
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
     #include "lvgl.h"
+    #include "lvgl_private.h"
 #else
     #include "lvgl/lvgl.h"
+    #include "lvgl/lvgl_private.h"
+#endif
+
+#ifdef LV_USE_XML
+    #include "lv_xml/lv_xml.h"
 #endif
 
 
+
+/* Prototypes for target functions, needed by responsive const definitions */
+
+void metronome_ui_set_target(uint32_t target);
+uint32_t metronome_ui_get_target(void);
+bool metronome_ui_check_target(uint32_t target);
 
 /*********************
  *      DEFINES
  *********************/
 
+#define METRONOME_UI_TARGET_UNDEFINED  (0 << 1)
+#define METRONOME_UI_TARGET_TARGET1    (1 << 1)
+#define METRONOME_UI_TARGET_ALL        0x0FFFFFFF
+
+/* By default compile for all targets, allowing to switch to any targets at runtime */
+#ifndef METRONOME_UI_COMPILE_TARGET
+#define METRONOME_UI_COMPILE_TARGET METRONOME_UI_TARGET_ALL
+#endif
+
+#define METRONOME_UI_CHECK_COMPILE_TARGET(target) (METRONOME_UI_COMPILE_TARGET & (target) ? 1 : 0)
+
 /**
  * global BPM min value
  */
 #define BPM_MIN 40
-
 /**
  * global BPM max value
  */
 #define BPM_MAX 200
-
 /**
  * global beats min value
  */
 #define BEATS_MIN 2
-
 /**
  * global beats max value
  */
 #define BEATS_MAX 7
+
+
+#ifndef LV_XML_EVAL_STRING_BUF_SIZE
+    #define LV_XML_EVAL_STRING_BUF_SIZE 256
+#endif
 
 /**********************
  *      TYPEDEFS
@@ -69,24 +94,21 @@ extern "C" {
  * Fonts
  *----------------*/
 
+/* Targets: any */
 extern lv_font_t * font_oxanium_semibold_16;
-
 extern lv_font_t * font_oxanium_semibold_20;
-
 extern lv_font_t * font_oxanium_semibold_25;
-
 extern lv_font_t * font_gemunu_light_110;
-
 extern lv_font_t * font_gemunu_light_130;
-
 extern lv_font_t * font_gemunu_bold_20;
-
 extern lv_font_t * font_gemunu_medium_60;
+
 
 /*----------------
  * Images
  *----------------*/
 
+/* Targets: any */
 extern const void * img_note;
 extern const void * img_play;
 extern const void * img_pause;

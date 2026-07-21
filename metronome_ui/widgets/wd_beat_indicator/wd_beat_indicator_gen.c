@@ -8,7 +8,17 @@
  *********************/
 
 #include "wd_beat_indicator_private_gen.h"
-#include "lvgl/src/core/lv_obj_class_private.h"
+#ifdef LV_LVGL_H_INCLUDE_SIMPLE
+    #include "lvgl.h"
+    #include "lvgl_private.h"
+#else
+    #include "lvgl/lvgl.h"
+    #include "lvgl/lvgl_private.h"
+#endif
+
+#ifdef LV_USE_XML
+    #include "lv_xml/lv_xml.h"
+#endif
 #include "../../metronome_ui.h"
 
 /*********************
@@ -75,24 +85,34 @@ static void wd_beat_indicator_constructor(const lv_obj_class_t * class_p, lv_obj
     static bool style_inited = false;
 
     if (!style_inited) {
-        lv_style_init(&style_root);
-        lv_style_set_width(&style_root, LV_SIZE_CONTENT);
-        lv_style_set_height(&style_root, 50);
-        lv_style_set_pad_all(&style_root, 0);
-        lv_style_set_layout(&style_root, LV_LAYOUT_FLEX);
-        lv_style_set_flex_flow(&style_root, LV_FLEX_FLOW_ROW);
-        lv_style_set_flex_cross_place(&style_root, LV_FLEX_ALIGN_CENTER);
-        lv_style_set_flex_track_place(&style_root, LV_FLEX_ALIGN_CENTER);
-        lv_style_set_pad_column(&style_root, 14);
-        lv_style_set_bg_opa(&style_root, 0);
+        #if METRONOME_UI_CHECK_COMPILE_TARGET(METRONOME_UI_TARGET_ALL)
+        if (metronome_ui_check_target(METRONOME_UI_TARGET_ALL)) {
+            lv_style_init(&style_root);
+            lv_style_set_width(&style_root, LV_SIZE_CONTENT);
+            lv_style_set_height(&style_root, 50);
+            lv_style_set_pad_all(&style_root, 0);
+            lv_style_set_layout(&style_root, LV_LAYOUT_FLEX);
+            lv_style_set_flex_flow(&style_root, LV_FLEX_FLOW_ROW);
+            lv_style_set_flex_cross_place(&style_root, LV_FLEX_ALIGN_CENTER);
+            lv_style_set_flex_track_place(&style_root, LV_FLEX_ALIGN_CENTER);
+            lv_style_set_pad_column(&style_root, 14);
+            lv_style_set_bg_opa(&style_root, 0);
 
+        }
+        #endif
         style_inited = true;
     }
-    lv_obj_set_name(obj, "root");
 
-    lv_obj_add_style(obj, &style_root, 0);
+    lv_obj_t * the_root = NULL;
+    #if METRONOME_UI_CHECK_COMPILE_TARGET(METRONOME_UI_TARGET_ALL)
+    if (metronome_ui_check_target(METRONOME_UI_TARGET_ALL)) {
+        lv_obj_set_name(obj, "root");
 
+        lv_obj_add_style(obj, &style_root, 0);
 
+        the_root = obj;
+    }
+    #endif
     wd_beat_indicator_constructor_hook(obj);
 
     LV_TRACE_OBJ_CREATE("finished");

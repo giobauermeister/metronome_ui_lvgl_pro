@@ -1,0 +1,14 @@
+{
+  "font:font_oxanium_semibold_16": "2eba25aa19d1e7bf-7cf158ebb97782a7",
+  "font:font_oxanium_semibold_20": "2eba25aa19d1e7bf-4666ecfcb38e9130",
+  "font:font_oxanium_semibold_25": "2eba25aa19d1e7bf-4bc1367d60c12129",
+  "font:font_gemunu_light_110": "d0ea5209318268a5-7a91973c6bc30401",
+  "font:font_gemunu_light_130": "d0ea5209318268a5-8824383697f1d667",
+  "font:font_gemunu_bold_20": "d0ea5209318268a5-f84dde11144e3df5",
+  "font:font_gemunu_medium_60": "1ee83fc204a4d009-71ad2cbdc55b00f6",
+  "image:img_note": "7a5fc90218f6be1c-a5946e8b79fe5b6b",
+  "image:img_play": "2ee994d1d6651731-a7ff798b82d083cb",
+  "image:img_pause": "b367524ce79b8a70-5e27755f9686184d",
+  "image:img_scale_gradient": "7f80ebf1b26996e3-1bfaa470a9002985",
+  "image:img_lvgl_logo": "a66eb9b0a0e3e8c1-fa88f960a6bbb2a1"
+}

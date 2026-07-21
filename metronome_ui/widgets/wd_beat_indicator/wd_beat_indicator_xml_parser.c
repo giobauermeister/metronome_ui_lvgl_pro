@@ -10,12 +10,20 @@
 #include "wd_beat_indicator_gen.h"
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
-    #include "src/lvgl_private.h"
+    #include "lvgl.h"
+    #include "lvgl_private.h"
 #else
-    #include "lvgl/src/lvgl_private.h"
+    #include "lvgl/lvgl.h"
+    #include "lvgl/lvgl_private.h"
+#endif
+
+#ifdef LV_USE_XML
+    #include "lv_xml/lv_xml.h"
 #endif
 
 #if LV_USE_XML
+
+#include "lv_xml_private/lv_xml_private.h"
 
 /*********************
  *      DEFINES
